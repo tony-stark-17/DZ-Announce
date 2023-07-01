@@ -9,5 +9,5 @@ ESX.RegisterCommand({'announce', 'annc'}, 'admin', function(xPlayer, args, showE
         Wait(Config.Length + 1000)
         Config.Used = false
     end
-  end, false, {help ='Send an Announcement', arguments = {{name = 'text', help = 'Message', type = 'any'}}
+  end, false, {help ='Send an Announcement', arguments = {{name = 'text', help = 'Message', type = 'string'}}
 })
