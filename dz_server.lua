@@ -13,19 +13,15 @@ else
         print("[dz-announcements] ESX isn't include 'god' group.")
     else
         if Config.FrameWork == "ESX" then
-            TriggerEvent('es:addGroupCommand', 'announce', Config.Group, function(source, args, user)
-                Wait(1500)
+            ESX.RegisterCommand({'announce', 'annc'}, 'admin', function(xPlayer, args, showError)
                 if not Config.Used then
-                    if args ~= nil then
-                        TriggerClientEvent('dz-announce:client:sendNuiMessage', -1, Config.Length, tostring(table.concat(args, " ")))
-                        Config.Used = true
-                    end
+                    TriggerClientEvent('dz-announce:client:sendNuiMessage', -1, Config.Length, args.text)
+                    Config.Used = true
                     Wait(Config.Length + 1000)
                     Config.Used = false
                 end
-            end, function(source, args, user)
-                TriggerClientEvent("dz-notify:client:notify", source, "You're not a admin.", 1)
-            end, {help = "Send a new announce to the server players."})
+              end, false, {help ='Send an Announcement', arguments = {{name = 'text', help = 'Message', type = 'any'}}
+            })
         elseif Config.FrameWork == "QBCore" then
             QBCore = nil
             TriggerEvent('QBCore:GetObject', function(obj) QBCore = obj end)
