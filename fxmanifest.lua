@@ -6,6 +6,8 @@ games { 'gta5' }
 description 'DZ Announcements'
 author 'dz-security.live'
 
+shared_script '@es_extended/imports.lua'
+
 client_script 'dz_client.lua'
 server_script 'dz_server.lua'
 
